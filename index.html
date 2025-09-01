@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>East Coast Heatmap</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Leaflet.heat CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search noise sources...">
+        <button id="search-button">Search</button>
+        <div id="search-results"></div>
+    </div>
+    <div id="style-switcher">
+        <select id="map-style">
+            <option value="streets">OpenStreetMap</option>
+            <option value="satellite">Satellite</option>
+            <option value="dark">Dark Mode</option>
+            <option value="topo">Topographic</option>
+        </select>
+    </div>
+    <div id="map"></div>
+    
+    <div class="data-explanation">
+        <h2>Data Structure & Organization</h2>
+        
+        <section class="data-section">
+            <h3>JSON Data Structure</h3>
+            <div class="code-example">
+                <pre>
+{
+    "name": "Location Name",
+    "location": {
+        "city": "City Name",
+        "county": "County Name",
+        "coordinates": {
+            "latitude": 43.6591,
+            "longitude": -72.9889
+        }
+    },
+    "noise_data": {
+        "primary_source": "Source Type",
+        "decibel_levels": {
+            "minimum": 45,
+            "maximum": 85,
+            "average": 65
+        }
+    }
+}</pre>
+            </div>
+            <p>Each location on the map is stored in this structured format, allowing easy access to:</p>
+            <ul>
+                <li>Basic location information</li>
+                <li>Detailed noise measurements</li>
+                <li>Environmental impact data</li>
+                <li>Community responses</li>
+            </ul>
+        </section>
+
+        <section class="data-section">
+            <h3>Measurement Data Structure</h3>
+            <div class="code-example">
+                <pre>
+{
+    "seasonal_variations": {
+        "summer": {
+            "activity_level": "High",
+            "decibel_range": "60-85 dB"
+        }
+    },
+    "time_patterns": {
+        "peak_hours": "7:00-9:00",
+        "overnight_activity": "Low"
+    }
+}</pre>
+            </div>
+        </section>
+
+        <section class="data-section">
+            <h3>Impact Assessment Structure</h3>
+            <div class="code-example">
+                <pre>
+{
+    "health_impact": {
+        "risk_level": "Moderate",
+        "effects": ["Sleep disturbance", "Stress"],
+        "community_response": "Multiple complaints"
+    },
+    "affected_area": {
+        "total_acres": 500,
+        "population_impacted": 5000
+    }
+}</pre>
+            </div>
+        </section>
+    </div>
+
+    <div class="data-explanation">
+        <h2>Data Collection Methodology</h2>
+        
+        <section class="data-section">
+            <h3>Measurement Methods</h3>
+            <p>The noise pollution data is collected through multiple validated sources:</p>
+            <ul>
+                <li><strong>Professional Monitoring:</strong> Calibrated equipment at fixed stations using standardized measurement types (dBA, DNL, NEF)</li>
+                <li><strong>Government Stations:</strong> Official monitoring networks like ADM Soundscape and RSQA providing continuous 24/7 data</li>
+                <li><strong>Academic Research:</strong> Environmental health studies from institutions like McGill University measuring neighborhood-level exposure</li>
+                <li><strong>Citizen Science:</strong> Community monitoring stations with outdoor-mounted microphones providing local insights</li>
+            </ul>
+        </section>
+
+        <section class="data-section">
+            <h3>Data Verification</h3>
+            <p>Each data point is verified through multiple sources:</p>
+            <ul>
+                <li>Official documentation from environmental agencies</li>
+                <li>Peer-reviewed academic research publications</li>
+                <li>Government regulatory documentation</li>
+                <li>Professional acoustic studies and impact assessments</li>
+                <li>Cross-referenced community feedback</li>
+            </ul>
+        </section>
+
+        <section class="data-section">
+            <h3>Measurement Standards</h3>
+            <div class="code-example">
+                <pre>
+{
+    "measurement_types": {
+        "DNL": "Day-Night Average Sound Level",
+        "NEF": "Noise Exposure Forecast",
+        "dBA": "A-weighted decibels",
+        "sampling": "Continuous monitoring"
+    },
+    "equipment": {
+        "calibration": "Professional standards",
+        "placement": "Strategic monitoring points",
+        "maintenance": "Regular equipment checks"
+    }
+}</pre>
+            </div>
+        </section>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Leaflet.heat plugin -->
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <!-- Data and map scripts -->
+    <script src="data/airportData.js"></script>
+    <script src="js/map.js"></script>
+</body>
+</html>
